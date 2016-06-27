@@ -1,0 +1,29 @@
+<part>
+<def class="int" type="state">$machine_init_state=1</def>	
+<def class="int" type="state">$machine_send_validecode_state=2</def>
+<def class="int" type="state">$machine_validated_state=3</def>	
+<def class="int" type="state">$machine_has_inputed_state=4</def>
+<def class="int" type="state">$machine_end_state=5</def>
+
+<def class="int">$machine_send_event=1</def>
+<def class="int">$machine_validate_event=2</def>
+<def class="int">$machine_input_event=3</def>
+<def class="int">$machine_submit_event=4</def>
+
+<StateMachine id="businEss_machine">
+	<State id="machine_init_state">
+		<StateEvent>machine_send_event,	machine_send_validecode_state</StateEvent>
+		<StateEvent>machine_input_event, machine_has_inputed_state</StateEvent>
+	</State>
+	<State id="machine_send_validecode_state">
+		<StateEvent>machine_validate_event,	machine_validated_state</StateEvent>
+	</State>
+	<State id="machine_validated_state" IncludeState="machine_send_validecode_state">
+		<StateEvent>machine_input_event, machine_has_inputed_state</StateEvent>
+	</State>
+	<State id="machine_has_inputed_state">
+		<StateEvent>machine_submit_event, machine_end_state</StateEvent>
+	</State>
+</StateMachine>
+<test>$state=ExcuteStateMachine("business_machine",$State, $Event)</test>
+</part>

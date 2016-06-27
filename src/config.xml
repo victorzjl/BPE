@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parameters>
+    <ConfigDb>
+        <ServiceId>40998</ServiceId>
+        <ConnString>service=90_29Account user=riskcontrol password=riskcontrol</ConnString>
+        <QueryStatement>SELECT APPID,APPCODE FROM TBAPPPOLICYWHITELIST</QueryStatement>
+    </ConfigDb>
+
+		<!--related server-->
+		<ThreadNum>2</ThreadNum>
+		
+		<SapPort>29032</SapPort>
+		<CohPort>29132</CohPort>
+		
+		<ReportUrl>http://127.0.0.1/stat_more_actions.php</ReportUrl>
+		<DetailReportUrl>http://127.0.0.1/stat_pages.php</DetailReportUrl>
+    <ErrReportUrl>http://127.0.0.1/error_report.php</ErrReportUrl>
+		
+		<CacheThreadNum>1</CacheThreadNum>
+		<CacheWriteThreadNum>1</CacheWriteThreadNum>
+		<dbthreadnum>1</dbthreadnum>
+		
+		<!--related soc-->
+		<IsAsc>1</IsAsc>
+    <IsAuthSoc>0</IsAuthSoc>
+    <IsVerifySocSignature>0</IsVerifySocSignature>
+    <IsSocEnc>0</IsSocEnc>
+
+    <IntervalSecond>2</IntervalSecond>
+
+		<!--related map file-->
+		<MapQFile>ascmapfile</MapQFile>
+		<MapQCountList>40960,20480,10240,5120</MapQCountList>
+		
+		<DbSosList>
+			<ServiceId>45601</ServiceId>
+			<MasterDb conns="8">
+					<defaultconn>oracle://service=90_29Account user=riskcontrol password=vbUfavIIi5GgEiDAcsnzSmSk55hgMoPyOwA1fxkgiklor7eZo1Iv7+S1PZTIjO/N/TqukSGqEYuQKtpYJBAL0oL/1x+9Kjiu+WYc5aZ9IeCuNpGkxP8V4TSExwihd6mZ0WWiK2wTLFvNPq9SOKz3N9D68mPp8PM7Q7lmH1Pa62A=</defaultconn>
+			</MasterDb>
+		</DbSosList>
+
+		<CacheSosList>
+		    <ServiceId>45611</ServiceId>
+				<ServerAddr>10.132.17.208:11211</ServerAddr>
+				<ServerAddr>10.132.17.208:11212</ServerAddr>
+		</CacheSosList>
+
+		<CacheSosList>
+		    <ServiceId>45612</ServiceId>
+			    <ConHash>1</ConHash>
+				<ServerAddr>10.132.17.208:11211</ServerAddr>
+				<ServerAddr>10.132.17.208:11212</ServerAddr>
+		</CacheSosList>
+
+		<CacheSosList>
+		    <ServiceId>45613</ServiceId>
+				<ServerAddr>10.132.17.208:11211</ServerAddr>
+				<ServerAddr>10.132.17.208:11212</ServerAddr>
+		</CacheSosList>		
+		
+		<CacheSosList>
+		    <ServiceId>45614</ServiceId>
+				<ServerAddr>10.132.17.208:11211</ServerAddr>
+				<ServerAddr>10.132.17.208:11212</ServerAddr>
+		</CacheSosList>
+		
+		<CacheSosList>
+		    <ServiceId>45615</ServiceId>
+				<ServerAddr>10.132.17.208:11211</ServerAddr>
+				<ServerAddr>10.132.17.208:11212</ServerAddr>
+		</CacheSosList>
+	
+		<CacheSosList>
+		    <ServiceId>45616</ServiceId>
+				<ConHash>1</ConHash>
+				<ServerAddr>10.132.17.208:11211</ServerAddr>
+				<ServerAddr>10.132.17.208:11212</ServerAddr>
+		</CacheSosList>	
+		
+		<SosList>
+			<ServiceId>130101</ServiceId>
+			<ServerAddr>10.132.17.20:8090</ServerAddr>
+		</SosList>
+
+</parameters>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trigger>   
+
+    <service name="RecordLog" id="1">
+		<item serviceid="55303" msgid="1000" >
+			<request>
+				<field name="orderId"  type="string" />
+				<field name="transactionTime"  type="string" />
+				<field name="type"  type="int" />
+				<field name="ptIdSrc"  type="string" />
+				<field name="sndaIdSrc"  type="string" />
+				<field name="appIdSrc"  type="int" />
+				<field name="areaIdSrc"  type="int" />
+				<field name="ptIdDest"  type="string" />
+				<field name="sndaIdDest"  type="string" />
+				<field name="appIdDest"  type="int" />
+				<field name="areaIdDest"  type="int" />
+				<field name="payTypeId"  type="int" />
+				<field name="amount"  type="int" />
+				<field name="endpointIp"  type="string" />
+				<field name="appIp"  type="string" />
+				<field name="from"  type="string" />
+				<field name="bsIp"  type="string" />
+				<field name="appCode"  type="string" />
+				<field name="sessionId"  type="string" />
+				<field name="endpointIpDest"  type="string" />
+			</request>
+			<response> 
+				<field name="policy"  type="string" />
+			</response>
+		</item>
+
+		<item serviceid="55303" msgid="1002" >
+			<request>
+				<field name="orderId"  type="string" />
+				<field name="transactionTime"  type="string" />
+				<field name="policy"  type="string" />
+				<field name="type"  type="int" />
+				<field name="ptIdSrc"  type="string" />
+				<field name="sndaIdSrc"  type="string" />
+				<field name="appIdSrc"  type="int" />
+				<field name="areaIdSrc"  type="int" />
+				<field name="ptIdDest"  type="string" />
+				<field name="sndaIdDest"  type="string" />
+				<field name="appIdDest"  type="int" />
+				<field name="areaIdDest"  type="int" />
+				<field name="payTypeId"  type="int" />
+				<field name="amount"  type="int" />
+				<field name="endpointIp"  type="string" />
+				<field name="appIp"  type="string" />
+				<field name="from"  type="string" />
+				<field name="bsIp"  type="string" />
+				<field name="appCode"  type="string" />
+				<field name="sessionId"  type="string" />
+				<field name="endpointIpDest"  type="string" />
+			</request>
+			<response> 
+			</response>
+		</item>
+
+		<item serviceid="55303" msgid="1003" >
+			<request>
+				<field name="orderId"  type="string" />
+				<field name="transactionTime"  type="string" />
+				<field name="billingResult"  type="int" />
+				<field name="type"  type="int" />
+				<field name="ptIdSrc"  type="string" />
+				<field name="sndaIdSrc"  type="string" />
+				<field name="appIdSrc"  type="int" />
+				<field name="areaIdSrc"  type="int" />
+				<field name="ptIdDest"  type="string" />
+				<field name="sndaIdDest"  type="string" />
+				<field name="appIdDest"  type="int" />
+				<field name="areaIdDest"  type="int" />
+				<field name="payTypeId"  type="int" />
+				<field name="amount"  type="int" />
+				<field name="endpointIp"  type="string" />
+				<field name="appIp"  type="string" />
+				<field name="from"  type="string" />
+				<field name="bsIp"  type="string" />
+				<field name="appCode"  type="string" />
+				<field name="sessionId"  type="string" />
+				<field name="endpointIpDest"  type="string" />
+			</request>
+			<response> 
+			</response>
+		</item>
+
+		<item serviceid="55303" msgid="11" >
+			<request>
+				<field name="sndaId"  type="string" />
+				<field name="appId"  type="int" />
+			</request>
+			<response> 
+			</response>
+		</item>
+
+		<item serviceid="55303" msgid="12" >
+			<request>
+				<field name="sndaId"  type="string" />
+				<field name="appId"  type="int" />
+			</request>
+			<response> 
+			</response>
+		</item>
+
+	  </service>  
+	  
+    <!--
+    <service name="IsServiceAvailable" id="2">
+        <item serviceid="51001" msgid="4">
+            <request>
+                <field name="AccountCenter" type="service"  />
+                <field name="SAS"           type="service"  />	                     
+                <field name="UdbRegisterAdditional" type="service" />				
+                <field name="UdbGameApp" type="service" />		
+            </request>
+            <response>
+            </response>
+        </item>
+	</service>  
+	-->
+</trigger>
