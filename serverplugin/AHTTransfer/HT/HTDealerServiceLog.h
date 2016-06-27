@@ -1,0 +1,14 @@
+#ifndef _HTDEALER_SERVICE_LOG_H_
+#define _HTDEALER_SERVICE_LOG_H_
+
+#include "LogManager.h"
+
+const int HT_MODULE = 95;
+DEFINE_MODULE_XLOG(HT_MODULE,HT_XLOG)
+#define HT_SLOG(Level,Event) SLOG(HT_MODULE,Level,Event)
+	
+const int HT_ASYNCLOG_MODULE = 105;
+DEFINE_MODULE_XLOG(HT_ASYNCLOG_MODULE,AHT_XLOG)
+#define AHT_SLOG(Level,Event) SLOG(HT_ASYNCLOG_MODULE,Level,Event)
+
+#endif

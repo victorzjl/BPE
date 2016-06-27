@@ -1,0 +1,10 @@
+#ifndef _SO_PLUGIN_LOG_H_
+#define _SO_PLUGIN_LOG_H_
+
+#include "LogManager.h"
+
+const int SOPLUGIN_BUSINESS_MODULE=32;
+DEFINE_MODULE_XLOG(SOPLUGIN_BUSINESS_MODULE,SO_XLOG)
+
+#endif
+
