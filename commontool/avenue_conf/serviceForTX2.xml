@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<service  name="serviceForTX" id="55810" IsTreeStruct ="false" InEncoder="AttackFilter"> 	
+	<type name="version_type"		class="string"		code="1"/>	
+	<type name="areaId_type"		class="int"			code="2"/>
+	<type name="serverId_type"		class="int" 		code="3"/>
+	<type name="needupgrade_type"	class="int"			code="4" validator="required"  returncode="-2001" returnmsg="test"/>
+	<type name="maxversion_type"	class="string" 		code="5"/>
+	<type name="upgradeUrl_type"	class="string" 		code="6" Encoder="NormalEncoder" EncoderParam="ab,34|cd,56"/>
+	
+	<type name="fromOpenId_type"	class="string" 		code="11"/>
+	<type name="toOpenId_type"		class="string"		code="12" Encoder="NormalEncoder" EncoderParam="ab,34|cd,56"/>
+	<type name="openRet_type"		class="int" 		code="13"/>
+	
+	<type name="queryOpenId_type"	class="string"		code="14"/>
+	<type name="presentList_type"	class="struct" 		code="15">
+        <field name="FromOpenId" 	type="string" 	len="64"  Encoder="HtmlFilter"/>
+		<field name="State"      	type="int" validator="NumberRange" ValidatorParam="20,93" returncode="-2002" returnmsg="test2"/>
+		<field name="name"      	type="string" Encoder="NormalEncoder" EncoderParam="ab,34|cd,56"/>
+    </type>
+	<type name="presentList_Array_Type" 	class="array"  itemType="presentList_type"/>
+	<type name="areaId_Array_type" 	class="array"  itemType="areaId_type"/>
+	
+	
+	<type name="testcode_type" class="tlv" code="103"> 
+		<field name="evalue" type="version_type"/> 
+		<field name="key" type="areaId_type" /> 
+		<field name="value" type="maxversion_type"/> 
+	</type>  
+	<type name="testcode_tlv_array_type" class="tlv" arrayfield="true" code="106"> 
+		<field name="testcode_tlvarray" type="testcode_type"/> 
+	</type>
+	<type name="version2_type"		class="string"		code="91"/>	
+	<type name="version3_type"		class="string"		code="92"/>	
+	<type name="utf8test_type"		class="string"		code="93"  />	
+	<type name="gbktest_type"		class="string"		code="94" />	
+	<type name="failReason_type"		class="string"		code="95" />
+	
+	<message name="checkVersion" id="2">
+        <requestParameter>		
+			<field name="version"			type="version_type"/>
+			<field name="areaId"			type="areaId_Array_type"	 default="3"	validator="NumberRange" ValidatorParam="2,3" returncode="-1102"/>
+			<field name="presentList"			type="presentList_Array_Type" 	required="true"/>
+			<field name="upgradeUrl"			type="upgradeUrl_type" />
+			<field name="serverId"			type="serverId_type" default="4"/>
+			<field name="toOpenId"			type="toOpenId_type" default="123" Encoder="EscapeEncoder"/>
+			<field name="utf8test"			type="utf8test_type" Encoder="sbc2dbcutf8"/>
+			<field name="gbktest"			type="gbktest_type"  Encoder="sbc2dbcgbk" />
+		</requestParameter>		
+		<responseParameter>	
+			<field name="failReason"			type="failReason_type" />
+			<field name="upgradeUrl"			type="upgradeUrl_type" />
+			<field name="needupgrade"			type="needupgrade_type" />	
+			<field name="maxversion"			type="maxversion_type"/>	
+			<field name="presentList"			type="presentList_Array_Type" required="true"/>
+			<field name="areaId"			type="areaId_Array_type"	 default="3"	validator="NumberRange" ValidatorParam="2,3" returncode="-2003"/>
+			<field name="utf8test"			type="utf8test_type" />
+			<field name="gbktest"			type="gbktest_type" />
+		</responseParameter>
+	</message>
+	
+
+	<message name="queryPresent" id="5">
+        <requestParameter>		
+			<field name="ToOpenId"			type="queryOpenId_type"		/>
+			<field name="version2"			type="version2_type"	validator="email" 	/>
+			<field name="version3"			type="version3_type"	validator="email_r" 	/>
+		</requestParameter>		
+		<responseParameter>	
+			<field name="info"				type="presentList_Array_Type"/>	
+		</responseParameter>
+	</message>
+	
+</service>
