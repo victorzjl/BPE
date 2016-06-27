@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parameters>
+        <SapServerIp>10.132.17.48</SapServerIp>
+        <SapServerPort>8095</SapServerPort>
+        <LocalKey>12345@sdo</LocalKey>
+        <Soc concurrence="40">
+                <SapPort>0</SapPort>
+                <ExecuteOrder type="connection_circle">
+                        <Command name="Undefined"  serviceId="39" msgId="1000"  interval=0 concurrence="1">
+                                                  <Attribute name="Undefined" id="12" type="int">2</Attribute>
+                                                  <Attribute name="Undefined" id="23" type="string">www.qidian.com</Attribute>
+                                                  <Attribute name="Undefined" id="10" type="int">10</Attribute>
+                                                  <Attribute name="Undefined" id="11" type="int">1</Attribute>
+                                                  <Attribute name="Undefined" id="28" type="string">127.0.0.1</Attribute>
+                                            </Command>
+                </ExecuteOrder>
+        </Soc>
+</parameters>

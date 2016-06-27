@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parameters>
+        <SapServerIp>127.0.0.1</SapServerIp>
+        <SapServerPort>8644</SapServerPort>
+        <Soc concurrence="1">
+                <SapPort>0</SapPort>
+                <Password>111111</Password>
+                <ExecuteOrder type="connection_circle">
+                        <Command name="Undefined"  serviceId="13" msgId="3"  interval="0" concurrence="1">
+                                <Attribute name="Undefined" id="2" type="string">123456</Attribute>
+                                <Attribute name="Undefined" id="1" type="int">107</Attribute>
+                                <Attribute name="Undefined" id="7" type="struct">10703,11</Attribute>
+				 <Attribute name="Undefined" id="7" type="struct">10704,22</Attribute>
+
+            		</Command>
+
+			<Command name="Undefined"  serviceId="13" msgId="3"  interval="0" concurrence="1">
+                                <Attribute name="Undefined" id="2" type="string">123456</Attribute>
+                                <Attribute name="Undefined" id="1" type="int">107</Attribute>
+                                <Attribute name="Undefined" id="3" type="int">10703</Attribute>
+                                 <Attribute name="Undefined" id="3" type="int">10704</Attribute>
+
+            		</Command>   
+
+			<Command name="Undefined"  serviceId="13" msgId="1"  interval="0" concurrence="1">
+                                <Attribute name="Undefined" id="2" type="string">123456</Attribute>
+                                <Attribute name="Undefined" id="1" type="int">107</Attribute>
+                                <Attribute name="Undefined" id="3" type="int">10703</Attribute>
+                                 <Attribute name="Undefined" id="3" type="int">10704</Attribute>
+
+            		</Command>   
+
+                </ExecuteOrder>
+        </Soc>
+</parameters>

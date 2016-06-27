@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parameters>
+        <SapServerIp>127.0.0.1</SapServerIp>
+        <SapServerPort>8989</SapServerPort>
+        <AppId>9</AppId>
+        <AreaId>23</AreaId>
+        <Soc concurrence="400">
+			<SapPort>0</SapPort>
+            <ExecuteOrder type="circle">
+				<Command name="Undefined"  serviceId="1" msgId="2"  interval="0" concurrence="1">
+					<Attribute name="Undefined" id="1" type="string">abc</Attribute>
+					<Attribute name="Undefined" id="7" type="int">1</Attribute>
+					<Attribute name="Undefined" id="8" type="string">1.0.0.1</Attribute>
+					<Attribute name="Undefined" id="9" type="int">1</Attribute>
+					<Attribute name="Undefined" id="10" type="string">1.0</Attribute>
+					<Attribute name="Undefined" id="11" type="string">111</Attribute>
+				</Command>
+				<Command name="Undefined"  serviceId="1" msgId="2"  interval="0" concurrence="1">
+					<Attribute name="Undefined" id="1" type="string">abc</Attribute>
+					<Attribute name="Undefined" id="7" type="int">1</Attribute>
+					<Attribute name="Undefined" id="8" type="string">1.0.0.1</Attribute>
+					<Attribute name="Undefined" id="9" type="int">1</Attribute>
+					<Attribute name="Undefined" id="10" type="string">1.0</Attribute>
+					<Attribute name="Undefined" id="11" type="string">111</Attribute>
+				</Command>
+				<Command name="Undefined"  serviceId="1" msgId="2"  interval="0" concurrence="1">
+					<Attribute name="Undefined" id="1" type="string">abc</Attribute>
+					<Attribute name="Undefined" id="7" type="int">1</Attribute>
+					<Attribute name="Undefined" id="8" type="string">1.0.0.1</Attribute>
+					<Attribute name="Undefined" id="9" type="int">1</Attribute>
+					<Attribute name="Undefined" id="10" type="string">1.0</Attribute>
+					<Attribute name="Undefined" id="11" type="string">111</Attribute>
+				</Command>
+				<Command name="Undefined"  serviceId="1" msgId="2"  interval="0" concurrence="1">
+					<Attribute name="Undefined" id="1" type="string">abc</Attribute>
+					<Attribute name="Undefined" id="7" type="int">0</Attribute>
+					<Attribute name="Undefined" id="8" type="string">1.0.0.1</Attribute>
+					<Attribute name="Undefined" id="9" type="int">1</Attribute>
+					<Attribute name="Undefined" id="10" type="string">1.0</Attribute>
+					<Attribute name="Undefined" id="11" type="string">111</Attribute>
+				</Command>
+				<Command name="Undefined"  serviceId="1" msgId="2"  interval="0" concurrence="1">
+					<Attribute name="Undefined" id="1" type="string"></Attribute>
+					<Attribute name="Undefined" id="7" type="int">1</Attribute>
+					<Attribute name="Undefined" id="8" type="string">1.0.0.1</Attribute>
+					<Attribute name="Undefined" id="9" type="int">1</Attribute>
+					<Attribute name="Undefined" id="10" type="string">1.0</Attribute>
+					<Attribute name="Undefined" id="11" type="string">111</Attribute>
+				</Command>
+				<Command name="Undefined"  serviceId="3" msgId="2"  interval="0" concurrence="1">
+					<Attribute name="Undefined" id="1" type="string">abcd</Attribute>
+					<Attribute name="Undefined" id="7" type="int">0</Attribute>
+					<Attribute name="Undefined" id="8" type="string">1.0.0.1</Attribute>
+					<Attribute name="Undefined" id="9" type="int">1</Attribute>
+					<Attribute name="Undefined" id="10" type="string">1.0</Attribute>
+					<Attribute name="Undefined" id="11" type="string">111345</Attribute>
+				</Command>
+				<Command name="Undefined"  serviceId="1" msgId="2"  interval="0" concurrence="1">
+					<Attribute name="Undefined" id="1" type="string">abcde</Attribute>
+					<Attribute name="Undefined" id="7" type="int">1</Attribute>
+					<Attribute name="Undefined" id="8" type="string">1.0.0.1</Attribute>
+					<Attribute name="Undefined" id="9" type="int">2</Attribute>
+					<Attribute name="Undefined" id="10" type="string">1.0</Attribute>
+					<Attribute name="Undefined" id="11" type="string">111</Attribute>
+				</Command>
+				<Command name="Undefined"  serviceId="1" msgId="2"  interval="0" concurrence="1">
+					<Attribute name="Undefined" id="1" type="string">abcde</Attribute>
+					<Attribute name="Undefined" id="7" type="int">0</Attribute>
+					<Attribute name="Undefined" id="8" type="string">1.0.0.1</Attribute>
+					<Attribute name="Undefined" id="9" type="int">2</Attribute>
+					<Attribute name="Undefined" id="10" type="string">1.0</Attribute>
+					<Attribute name="Undefined" id="11" type="string">111</Attribute>
+				</Command>
+			</ExecuteOrder>
+        </Soc>
+</parameters>
+

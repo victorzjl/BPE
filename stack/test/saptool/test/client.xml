@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parameters>
+        <SapServerIp>10.132.17.48</SapServerIp>
+        <SapServerPort>8095</SapServerPort>
+        <LocalKey>12345@sdo</LocalKey>
+        <Soc concurrence="40">
+                <SapPort>0</SapPort>
+                <ExecuteOrder type="connection_circle">
+                        <Command name="Undefined"  serviceId="55101" msgId="1100"  interval=0 concurrence="1">
+							  <Attribute name="Undefined" id="11" type="int">212</Attribute>
+							  <Attribute name="Undefined" id="13" type="int">1</Attribute>
+							  <Attribute name="Undefined" id="15" type="int">2</Attribute>
+							  <Attribute name="Undefined" id="16" type="int">0</Attribute>
+							  <Attribute name="Undefined" id="17" type="int">1</Attribute>
+							  <Attribute name="Undefined" id="20" type="int">0</Attribute>
+							  <Attribute name="Undefined" id="34" type="string">114.80.110.110</Attribute>
+							  <Attribute name="Undefined" id="37" type="string"></Attribute>
+							  <Attribute name="Undefined" id="39" type="string">xwtest0029</Attribute>
+							  <Attribute name="Undefined" id="44" type="string">1111</Attribute>
+							  <Attribute name="Undefined" id="50" type="string">test.www.sdo.com</Attribute>
+							  <Attribute name="Undefined" id="54" type="string"></Attribute>
+							  <Attribute name="Undefined" id="83" type="string">zh_CN</Attribute>
+							  <Attribute name="Undefined" id="84" type="string">9</Attribute>
+							  <Attribute name="Undefined" id="98" type="string">114.80.133.7</Attribute>
+						</Command>
+                </ExecuteOrder>
+        </Soc>
+</parameters>

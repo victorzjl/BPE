@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parameters>
+	<SapServerIp>192.168.90.22</SapServerIp>
+	<SapServerPort>8011</SapServerPort>
+	<Soc concurrence="100">
+		<Password>abc</Password>
+		<Key>123456</Key>
+		<SapPort>0</SapPort>
+		<ExecuteOrder type="circle">
+			<Command name="Undefined"  serviceId="1" msgId="1"  interval="0" concurrence="1">
+				<Attribute name="Undefined" id="2" type="string">10007</Attribute>
+				 <Attribute name="Undefined" id="3" type="int">1</Attribute>
+			          <Attribute name="Undefined" id="3" type="int">2</Attribute>
+                        </Command>
+			<Command name="Undefined"  serviceId="1" msgId="2"  interval="0" concurrence="1">
+                                <Attribute name="Undefined" id="2" type="string">10007</Attribute>
+				<Attribute name="Undefined" id="2" type="string">10002</Attribute>
+				<Attribute name="Undefined" id="2" type="string">80007</Attribute>
+                                 <Attribute name="Undefined" id="3" type="int">1</Attribute>
+                                  <Attribute name="Undefined" id="3" type="int">2</Attribute>
+                        </Command>
+			<Command name="Undefined"  serviceId="1" msgId="3"  interval="0" concurrence="1">
+                                <Attribute name="Undefined" id="2" type="string">44447</Attribute>
+                                <Attribute name="Undefined" id="7" type="string">111122</Attribute>
+                        </Command>
+			<Command name="Undefined"  serviceId="1" msgId="4"  interval="0" concurrence="1">
+                                <Attribute name="Undefined" id="2" type="string">44447</Attribute>
+                                <Attribute name="Undefined" id="3" type="string">1111</Attribute>
+                        </Command>
+		</ExecuteOrder>
+	</Soc>
+</parameters>
+

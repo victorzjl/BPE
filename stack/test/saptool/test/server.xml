@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parameters>
+	<SapServerPort>9001</SapServerPort>
+	<SocList>
+		<soc username="test1" password="pass1"/>
+		<soc username="test2" password="pass2"/>
+		<soc username="test2" password="pass2"/>
+	</SocList>
+	<Response>
+		<Command name="Register" code="0">
+			<Attribute name="Nonce">Auto</Attribute>
+		</Command>
+		<Command name="ReRegister" code="0">
+			<Attribute name="EncKey">Auto</Attribute>
+			<Attribute name="Addr">192.168.0.100:4040</Attribute>
+		</Command>
+		<Command name="SubscribeMsg" code="41">
+		</Command>
+		<Command name="Undefined"  serviceId="17" msgId="1" code="0">
+			<Attribute name="Undefined" id="2" type="int">5</Attribute>
+			<Attribute name="Undefined" id="4" type="string">5</Attribute>
+		</Command>
+		<Command name="Undefined"  serviceId="2" msgId="1" code="0">
+                        <Attribute name="Undefined" id="1" type="string">zongjinliang</Attribute>
+                        <Attribute name="Undefined" id="2" type="string">0.0.0.0</Attribute>
+			<Attribute name="Undefined" id="3" type="int">0</Attribute>
+                        <Attribute name="Undefined" id="4" type="string">abc</Attribute>
+			<Attribute name="Undefined" id="5" type="string">123456</Attribute>
+                        <Attribute name="Undefined" id="6" type="string">LocalPort=30088&#xD;&#xA;
+ConnectTimeOut=3&#xD;&#xA;
+SignKey=123456&#xD;&#xA;
+SocPwd=abc&#xD;&#xA;
+SpId=1&#xD;&#xA;
+ServerId=2&#xD;&#xA;
+AreaId=3&#xD;&#xA;
+GroupId=4&#xD;&#xA;
+HostId=23&#xD;&#xA;
+SiteCode=321&#xD;&#xA;
+ServerIp0=192.168.90.22&#xD;&#xA;
+ServerPort0=8095</Attribute>
+			<Attribute name="Undefined" id="7" type="string">12</Attribute>
+                </Command>
+	</Response>
+</parameters>
+

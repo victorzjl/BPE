@@ -1,0 +1,22 @@
+#ifndef _SDO_COH_STACK_H_
+#define _SDO_COH_STACK_H_
+#include <boost/asio.hpp>
+#include <boost/thread.hpp>
+
+namespace sdo{
+	namespace coh{
+		class CCohStack
+		{
+			public:
+				static void Start();
+				static void Stop();
+				static boost::asio::io_service & GetIoService(){return sm_oIoService;}
+			private:
+				static boost::asio::io_service sm_oIoService;
+				static boost::asio::io_service::work *sm_oWork;
+				static boost::thread m_thread;
+		};
+	}
+}
+#endif
+

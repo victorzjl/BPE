@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parameters>
+        <SapServerIp>192.168.90.131</SapServerIp>
+        <SapServerPort>6050</SapServerPort>
+        <LocalKey>12345@sdo</LocalKey>
+        <Soc concurrence="40">
+                <SapPort>0</SapPort>
+                <ExecuteOrder type="connection_circle">
+                        <Command name="Undefined"  serviceId="40" msgId="1004"  interval=0 concurrence="1">
+                                <Attribute name="Undefined" id="14" type="int">2</Attribute><!--authenSource-->
+                                <Attribute name="Undefined" id="49" type="string">ULSTGT-1a854d78720941fe9c34bb9686929ee6</Attribute><!--msgLevel-->
+								<Attribute name="Undefined" id="45" type="string">www.sdo.com</Attribute>
+								<Attribute name="Undefined" id="48" type="string">1,2,3,4,5</Attribute><!--mobile-->
+								<Attribute name="Undefined" id="10" type="int">1</Attribute><!--content-->
+								<Attribute name="Undefined" id="12" type="int">1</Attribute><!--contentSign-->
+								<Attribute name="Undefined" id="28" type="string">127.0.0.1</Attribute><!--url-->
+						</Command>
+                </ExecuteOrder>
+        </Soc>
+</parameters>

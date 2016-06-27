@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parameters>
+        <SapServerIp>127.0.0.1</SapServerIp>
+        <SapServerPort>8011</SapServerPort>
+        <Soc concurrence="1">
+                <SapPort>0</SapPort>
+                <Password>111111</Password>
+                <ExecuteOrder type="once">
+                        <Command name="Undefined"  serviceId="13" msgId="1"  interval="0" concurrence="1">
+                                <Attribute name="Undefined" id="2" type="string">123456</Attribute>
+                                <Attribute name="Undefined" id="1" type="int">111</Attribute>
+                                <Attribute name="Undefined" id="3" type="int">11103</Attribute>
+				 <Attribute name="Undefined" id="3" type="int">11102</Attribute>
+
+            		</Command>
+			<Command name="Undefined"  serviceId="13" msgId="3"  interval="0" concurrence="1">
+                                <Attribute name="Undefined" id="2" type="string">456</Attribute>
+                                <Attribute name="Undefined" id="1" type="int">111</Attribute>
+                                <Attribute name="Undefined" id="7" type="struct">11103,asas@dsd</Attribute>
+                                 <Attribute name="Undefined" id="7" type="struct">11102,4545</Attribute>
+
+                        </Command>
+			<Command name="Undefined"  serviceId="13" msgId="2"  interval="0" concurrence="1">
+                                <Attribute name="Undefined" id="2" type="string">123456</Attribute>
+				 <Attribute name="Undefined" id="2" type="string">456</Attribute>
+                                <Attribute name="Undefined" id="1" type="int">111</Attribute>
+                                <Attribute name="Undefined" id="3" type="int">11103</Attribute>
+                                 <Attribute name="Undefined" id="3" type="int">11102</Attribute>
+
+                        </Command>
+			<Command name="Undefined"  serviceId="13" msgId="5"  interval="0" concurrence="1">
+                                <Attribute name="Undefined" id="1" type="int">111</Attribute>
+                                <Attribute name="Undefined" id="7" type="struct">11103,asas@dsd</Attribute>
+                        </Command>
+			<Command name="Undefined"  serviceId="13" msgId="8"  interval="0" concurrence="1">
+                                <Attribute name="Undefined" id="1" type="int">111</Attribute>
+                                <Attribute name="Undefined" id="7" type="struct">11103,asas@dsd</Attribute>
+                        </Command>
+
+
+                </ExecuteOrder>
+        </Soc>
+</parameters>
