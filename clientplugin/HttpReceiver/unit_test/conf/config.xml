@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parameters>
+<!--related server-->
+	<HpsPort>5777</HpsPort>
+	<CohPort>9557</CohPort>
+	<ReportUrl>http://api.monitor.sdo.com/stat_more_actions.php</ReportUrl>
+	<DetailReportUrl>http://api.monitor.sdo.com/stat_pages.php</DetailReportUrl>
+	<DgsUrl>http://192.168.90.22:10090/DGS/SendGatherLog.hps</DgsUrl>
+	<StackThread>6</StackThread>
+	
+<!--related osap-->	
+	<IsOsapVerify>0</IsOsapVerify>
+	<OsapTimeoutOption>0</OsapTimeoutOption> <!-- 0: if timeout continue, 1: if timeout return error code-->
+	
+<!--DGS-->
+	<SosList>
+        <ServiceId>11</ServiceId>
+        <ServerAddr>192.168.90.22:7774,0</ServerAddr>
+        <ServerAddr>192.168.90.22:7774,0</ServerAddr>
+        <ServerAddr>192.168.90.22:7774,1</ServerAddr>
+        <ServerAddr>192.168.90.22:7774,1</ServerAddr>
+    </SosList>
+
+<!--UDB-->
+    <SosList>
+        <ServiceId>13011,131024,130101,130102,130103,130104,130107,130108,130109,130110,130111,130112,130113,130114,130115,130116,130117,130118,130119,130120,130127</ServiceId>
+        <ServerAddr>192.168.90.22:8511</ServerAddr>
+    </SosList>
+
+
+<!--AccountCenter-->
+        <SosList>
+        <ServiceId>15,20017</ServiceId>
+        <ServerAddr>192.168.90.22:8585</ServerAddr>
+    </SosList>
+
+    <SosList>
+            <ServiceId>50040</ServiceId>
+        <ServerAddr>192.168.90.22:8099</ServerAddr>
+    </SosList>
+
+
+    <ErrorCode>
+    	<Code>-10264032</Code>
+    	<RewriteCount>1,1</RewriteCount>
+    </ErrorCode>
+    <ErrorCode>
+    	<Code>-10264033</Code>
+    	<RewriteCount>1,1</RewriteCount>
+    </ErrorCode>
+    <ErrorCode>
+    	<Code>-10242500</Code>
+    	<RewriteCount>3,1</RewriteCount>
+    </ErrorCode>
+    <ErrorCode>
+    	<Code>-10242504</Code>
+    	<RewriteCount>3,1</RewriteCount>
+    </ErrorCode>
+    <ErrorCode>
+    	<Code>-10242404</Code>
+    	<RewriteCount>3,1</RewriteCount>
+    </ErrorCode>
+</parameters>
+
+
