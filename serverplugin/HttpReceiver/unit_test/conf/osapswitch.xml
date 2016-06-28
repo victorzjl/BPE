@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<urlList>
-	<url username="apipool_displayacc">displayacc</url>
-	<url username="apipool_displayacc_outer">displayacc_outer</url>
-	<url username="apipool_authen">authen</url>
-	<url username="apipool_authen_outer">authen_outer</url>
-	<url username="apipool_account">apl_account/account.QuerySndaId</url>
-	<url username="apipool_account_outer">account_outer</url>
-</urlList>
