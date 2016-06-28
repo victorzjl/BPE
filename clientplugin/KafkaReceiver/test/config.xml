@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parameters>
+	
+
+	<MQRecevierSosList>
+		<ServiceId>40001</ServiceId>
+		<ServiceTopicConfig>40001:mqtest</ServiceTopicConfig>
+		<TopicConsumeConfig>mqtest:1_1</TopicConsumeConfig>
+		<ServerAddr>127.0.0.1:2181</ServerAddr>
+	</MQRecevierSosList >
+
+</parameters>

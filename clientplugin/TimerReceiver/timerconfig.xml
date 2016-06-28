@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parameters>	
+	<Request>
+			<RequestService>55795_2</RequestService>
+			
+			<RequestParam>8,"actionid"</RequestParam>
+			
+			  <RequestParam>11,"userid"</RequestParam> 
+			
+			 <RequestParam>9,0</RequestParam>  
+			
+			<Interval>20</Interval>
+	</Request>
+
+	<Request>
+			<RequestService>55795_7</RequestService>
+			
+			<Interval>30</Interval>
+	</Request>
+	
+</parameters>
