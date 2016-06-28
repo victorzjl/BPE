@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parameters>
+	
+	<MQSenderThreadNum>1</MQSenderThreadNum>
+
+	<MQSenderSosList>
+		<ServiceId>40001</ServiceId>
+		<ServiceTopic>mqtest:40001</ServiceTopic>
+		<ServerAddr>127.0.0.1:2181</ServerAddr>
+	</MQSenderSosList >
+
+</parameters>

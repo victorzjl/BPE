@@ -1,0 +1,19 @@
+#ifndef _ASYNC_VIRTUAL_SERVICE_LOG_H_
+#define _ASYNC_VIRTUAL_SERVICE_LOG_H_
+
+#include "LogManager.h"
+
+const int MQS_MODULE = 71;
+DEFINE_MODULE_XLOG(MQS_MODULE, MQS_XLOG)
+#define MQS_SLOG(Level,Event) SLOG(MQS_MODULE,Level,Event)
+
+const int MQS_ASYNC_MODULE = 81;
+DEFINE_MODULE_XLOG(MQS_ASYNC_MODULE, AMQS_XLOG)
+#define AMQS_SLOG(Level,Event) SLOG(MQS_ASYNCLOG_MODULE,Level,Event)
+
+
+#define ZK_XLOG  MQS_XLOG
+#define KAFKA_XLOG  MQS_XLOG
+
+
+#endif 
