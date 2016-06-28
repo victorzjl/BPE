@@ -1,0 +1,14 @@
+#ifndef _HTTP_CLIENT__LOG_HELP_H_
+#define _HTTP_CLIENT__LOG_HELP_H_
+#include "LogManager.h"
+
+#include "AsyncVirtualClientLog.h"
+
+#define HTTPCLIENT_XLOG HTTP_REC_XLOG
+#define HTTPCLIENT_SLOG HTTP_REC_SLOG
+
+//const int HTTP_CLIENT_STACK_MODULE=90;
+//DEFINE_MODULE_XLOG(HTTP_CLIENT_STACK_MODULE,HTTPCLIENT_XLOG)
+//#define HTTPCLIENT_SLOG(Level,Event) SLOG(HTTP_CLIENT_STACK_MODULE,Level,Event)
+
+#endif

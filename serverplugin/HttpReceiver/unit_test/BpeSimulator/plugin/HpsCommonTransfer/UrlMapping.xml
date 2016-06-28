@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parameters>
+	<UrlMapping>
+		<Item>v1/BpeWeb/request,12931,1</Item>
+	</UrlMapping>
+</parameters>
