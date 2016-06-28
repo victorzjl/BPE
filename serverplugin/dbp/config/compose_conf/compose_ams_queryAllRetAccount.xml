@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<compose service="AccountMergeService.QueryAllRetAccount" endnode="end"> 
+    <def class="array">$returnSndaInfo</def>	 
+	<def class="array">$returnSndaId</def>
+	<node index="queryAllMergeInfoCache">
+		<sequence index="a">
+			<request service="CacheMasterMergeInfo.get"> 
+				<assign>$this.masterSndaId=$req.masterSndaId</assign>             
+			</request>
+		</sequence>	
+		<result>
+		    <assign>$returnSndaInfo=$rsp.this.a.returnSndaInfo_array</assign>	
+			<goto node="getReturnSndaIdFromCacheVs">$code.a==0</goto>
+			<!-- 没有缓存查db -->
+			<goto node="queryAllMergeInfoDb" />
+		</result>                     
+	</node>
+	<node index="getReturnSndaIdFromCacheVs">
+		<sequence index="a">
+			<request service="AmsVirtualService.getReturnSndaId"> 
+				<assign>$this.reqSnIdInfo_array=$returnSndaInfo</assign>             
+			</request>
+		</sequence>	
+		<result>
+		    <assign>$returnSndaId=$rsp.this.a.returnSndaId_array</assign>	
+			<goto node="endNotExist">$rsp.this.a.snIdArrayLength==0</goto>
+			<goto node="end" />
+		</result>                     
+	</node>
+	<node index="queryAllMergeInfoDb">
+		<sequence index="a">
+			<request service="DbAcctMatrix.QueryAllMergeInfo">          
+				<assign>$this.masterSndaId=$req.masterSndaId</assign>                   
+			</request>
+		</sequence>	
+		<result>
+			<assign>$returnSndaInfo=$rsp.this.a.returnSndaInfo_array</assign>	
+			<goto node="endError">$code.a!=0</goto>
+			<goto node="mergeNotExist">$rsp.this.a.rowcount==0</goto>
+			 <goto node="getReturnSndaIdFromDbVs"/>
+		</result>                     
+	</node>
+	<node index="getReturnSndaIdFromDbVs">
+		<sequence index="a">
+			<request service="AmsVirtualService.getReturnSndaId"> 
+				<assign>$this.reqSnIdInfo_array=$returnSndaInfo</assign>             
+			</request>
+		</sequence>	
+		<result>
+		    <assign>$returnSndaId=$rsp.this.a.returnSndaId_array</assign>	
+			<goto node="setCache" />
+		</result>                     
+	</node>
+	<node index="mergeNotExist">
+		<sequence index="a">
+			<request service="CacheMergeAccount.set">  
+				<assign>$this.masterSndaId=$req.masterSndaId</assign> 
+                <assign>$this.returnSndaInfo_array=$returnSndaInfo</assign> 					
+			</request>
+		</sequence>	
+		<result>
+		    <goto node="endNotExist"/>
+		</result>                     
+	</node>	
+	<node index="setCache">	
+        <sequence index="a">
+			<request service="CacheMasterMergeInfo.set">          
+				<assign>$this.masterSndaId=$req.masterSndaId</assign> 
+                <assign>$this.returnSndaInfo_array=$returnSndaInfo</assign> 				
+			</request>
+		</sequence>    		
+		<result>
+		    <goto node="endNoError"/>
+		</result>                     
+	</node>	
+	
+	<node index="endNotExist">	    
+		<sequence index="a">
+			<response>
+			    <assign>$code=-10379601</assign>					
+			</response>
+		</sequence>
+        <result>
+            <goto node="-1" />
+		</result>
+	</node>
+	<node index="endNoError">	    
+		<sequence index="a">
+			<response>	
+				<assign>$code=0</assign>
+				<assign>$this.returnSndaInfo=$returnSndaInfo</assign>
+                <assign>$this.returnSndaId=$returnSndaId</assign>  	
+			</response>
+		</sequence>
+        <result>
+            <goto node="-1" />
+		</result>
+	</node>
+	<node index="endError">	    
+		<sequence index="a">
+			<response>	
+				<assign>$code=-10379612</assign>
+			</response>
+		</sequence>
+        <result>
+            <goto node="-1" />
+		</result>
+	</node>
+	<node index="end">	    
+		<sequence index="0">		    
+			<response>	
+                <assign>$this.returnSndaInfo=$returnSndaInfo</assign>
+                <assign>$this.returnSndaId=$returnSndaId</assign>  			
+			</response>
+		</sequence>
+        <result>
+            <goto node="-1">
+			</goto>
+		</result>
+	</node>
+	
+</compose>

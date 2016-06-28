@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 即是服务描述文件，也是OracleBroker执行的配置文件 -->
+<service  name="DbAcctMatrix" id="13107" IsTreeStruct ="false">
+    <type name="rowcount_type" class="int" code="1"/>
+    <type name="masterSndaId_type" class="int" code="10001"/>
+	<type name="returnSndaInfo_type" class="struct" code="10005">
+	  <type name="nSpId" class="int" />
+	  <type name="nAppId" class="int"/>
+	  <type name="nAreaId" class="int"/>
+	  <type name="nGroupId" class="int"/>
+	  <type name="szReturnSndaId" class="string" />
+	</type>	
+	<type name="sndaId_type" class="string" code="10006" />
+	<type name="returnSndaInfo_array_type" class="array" itemType="returnSndaInfo_type"/>
+	<type name="returnSndaId_array_type" class="array" itemType="returnSndaId_type"/>
+	
+	<type name="spId_type" class="int" code="10007" />
+	<type name="appId_type" class="int" code="10008"/>
+	<type name="areaId_type" class="int" code="10009"/>
+	<type name="groupId_type" class="int" code="10010"/>    
+	<type name="masterSndaId_type" class="string" code="10011" />
+	
+	<message name="QueryAccountInfo" id="1">
+		<sql>
+		<![CDATA[
+		    select s.RETURN_SNDAID , s.MASTER_SNDAID   
+               from T_BIZ_ACCTMATRIX  a, T_BIZ_RETURN_SNDAID s
+               where s.sp_id=:1  and s.app_id=:2 and s.area_id=:3 and s.group_id=:4 and a.sndaId=:5  and a. MATRIX_TYPE = 0 
+				  and a.MASTER_SNDAID=s. MASTER_SNDAID
+		]]>
+        </sql>
+
+		<requestParameter>
+			<field name="spId" type="spId_type" to=":1" />
+			<field name="appId" type="spId_type" to=":2" />
+			<field name="areaId" type="areaId_type" to=":3" />
+			<field name="groupId" type="groupId_type" to=":4" />
+			<field name="sndaId" type="sndaId_type" to=":5" />
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="rowcount" type="rowcount_type" from="$ROWCOUNT"/>
+			<field name="returnSndaId" type="sndaId_type" from="$result[0][0]"/>
+			<field name="masterSndaId" type="masterSndaId_type" from="$result[0][1]"/>
+		</responseParameter>
+	</message>
+	
+	
+	<message name="mergeAccount" id="2">
+		<sql>
+		    insert into T_BIZ_ACCTMATRIX (IDX , SNDAID , MASTER_SNDAID , BIND_DATE    , MATRIX_TYPE) 
+			   values (seq_ACCTMATRIX.nextval,  :szReturnSndaId  , :masterSndaId,sysdate,0)
+        </sql>
+        <sql>		 
+            insert into T_BIZ_RETURN_SNDAID(IDX,MASTER_SNDAID,APP_ID,AREA_ID,RETURN_SNDAID,SP_ID,GROUP_ID,CREATE_TIME,UPDATE_TIME) 
+               values (seq_RETURN_SNDAID.nextval, :masterSndaId , :nAppId , :nAreaId ,  :szReturnSndaId  , :nSpId , :nGroupId, sysdate  ,sysdate)
+        </sql>
+		
+		<requestParameter>		
+			<field name="masterSndaId" type="masterSndaId_type" to=":masterSndaId" />
+			<!-- returnSndaInfo_array_type是结构体数组，所以对所有用到returnSndaInfo_array_type入参的sql做循环批量插入 -->
+			<field name="returnSndaInfo_array" type="returnSndaInfo_array_type"  to=":nSpId , :nAppId , :nAreaId, :nGroupId ,:szReturnSndaId" />
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="rowcount" type="rowcount_type" from="$ROWCOUNT"/>
+		</responseParameter>
+	</message>
+	
+	<message name="deleteMergeAccount" id="3">
+		<sql>
+		    delete from T_BIZ_ACCTMATRIX where SNDAID=:1 and MASTER_SNDAID=:2 and MATRIX_TYPE=0
+        </sql>
+        <sql>
+            delete from  T_BIZ_RETURN_SNDAID  where  RETURN_SNDAID=:1 and MASTER_SNDAID=:2
+        </sql>
+		<requestParameter>
+		    <field name="sndaId" type="sndaId_type" to=":1" />
+			<field name="masterSndaId" type="masterSndaId_type" to=":2" />
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="rowcount" type="rowcount_type" from="$ROWCOUNT"/>
+		</responseParameter>
+	</message>
+	
+	<message name="queryLinkedAccounts" id="4">
+		<sql>
+		    select sndaid from T_BIZ_ACCTMATRIX  where  MASTER_SNDAID=:1  and  MATRIX_TYPE=1
+        </sql>
+		<requestParameter>
+			<field name="masterSndaId" type="masterSndaId_type" to=":1" />
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="rowcount" type="rowcount_type" from="$ROWCOUNT"/>
+			<field name="returnSndaId_array" type="returnSndaId_array_type" from="$result" />
+		</responseParameter>
+	</message>
+	
+	<message name="queryMergedAccounts" id="5">
+        <sql>
+            select s.sp_id,s.app_id,s.area_id,s.group_id,s.RETURN_SNDAID 
+              from  T_BIZ_ACCTMATRIX  a , T_BIZ_RETURN_SNDAID  s  
+              where a.MASTER_SNDAID =:1 and a.MATRIX_TYPE=0 and a.MASTER_SNDAID=s.MASTER_SNDAID
+        </sql>
+		<requestParameter>
+			<field name="masterSndaId" type="masterSndaId_type" to=":1" />			
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="rowcount" type="rowcount_type" from="$ROWCOUNT"/>
+			<field name="returnSndaInfo_array" type="returnSndaInfo_array_type" from="$result" />
+		</responseParameter>
+	</message>
+	
+</service>
+
+
+  
+

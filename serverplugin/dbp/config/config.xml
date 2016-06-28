@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parameters>
+    <!--cache addr-->
+	<CacheSosList>
+        <ServiceId>13108,13109</ServiceId>
+        <ServerAddr>10.129.58.22:9380</ServerAddr>
+        <ServerAddr>10.129.58.23:9380</ServerAddr>        
+    </CacheSosList>
+	<CacheSosList>
+        <ServiceId>13110</ServiceId>
+        <ServerAddr>10.129.36.31:9380</ServerAddr>
+        <ServerAddr>10.129.36.32:9380</ServerAddr>
+    </CacheSosList>
+    <!--db addr-->
+	<DbSosList>
+        <ServiceId>13101,13102,13104,13105,13107,13108</ServiceId>
+        <MasterDb conns="8">TNSName</MasterDb>
+        <!-- oracle standby模式下，不配置SlaveDb，如果master宕机，修改配置重启服务 -->
+    </DbSosList>
+	<DbSosList>
+        <ServiceId>13208</ServiceId>
+        <MasterDb conns="8" dbfactor="4" tbfactor="64">
+		  <!-- 对于一个业务中有的表分库分表，有的表不分，分2部分配置,DivideConns中描述分库分表的连接 -->
+		  <DivideConns>
+		    mysql://username1:password1@ip1:port:dbname_0,
+		    mysql://username1:password1@ip1:port:dbname_1,
+		    mysql://username2:password2@ip2:port:dbname_2,
+		    mysql://username2:password2@ip2:port:dbname_3
+		  <DivideConns>
+		    <!-- DefaultConn中描述不做分库分表的连接 -->
+		  <DefaultConn>
+		    mysql://username:password@ip:port:dbname
+		  </DefaultConn>
+		</MasterDb>
+        <SlaveDb conns="3">
+		  <DivideConns>
+		    mysql://username1:password1@ip1:port:dbname_0,
+		    mysql://username1:password1@ip1:port:dbname_1,
+		    mysql://username2:password2@ip2:port:dbname_2,
+		    mysql://username2:password2@ip2:port:dbname_3
+		  <DivideConns>
+		  <DefaultConn>
+		    mysql://username:password@ip:port:dbname
+		  </DefaultConn>
+		</SlaveDb>
+    </DbSosList>
+	<DbSosList>
+        <ServiceId>13308</ServiceId>
+        <MasterDb conns="8" dbfactor="4" tbfactor="256" factortype="md5" >
+		  mysql://username1:password1@ip1:port:dbname_0,
+		  mysql://username1:password1@ip1:port:dbname_1,
+		  mysql://username2:password2@ip2:port:dbname_2,
+		  mysql://username2:password2@ip2:port:dbname_3
+		</MasterDb>
+        <SlaveDb conns="3">mysql://username:password@ip:port:dbname</SlaveDb>
+    </DbSosList>
+</parameters>

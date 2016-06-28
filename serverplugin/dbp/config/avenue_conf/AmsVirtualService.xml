@@ -1,0 +1,121 @@
+<service  name="AmsVirtualService" id="40160" IsTreeStruct ="false">
+	<type name="reqSnIdInfo_type" class="struct" code="1">
+		<field name="spId" type="int" />
+		<field name="appId" type="int"/>
+		<field name="areadId" type="int"/>
+		<field name="groupId" type="int"/>
+		<field name="returnSndaId" type="string"/>
+	</type>
+	<type name="reqSnIdInfo_array_type" class="array" itemType="ReqSnIdInfo_type"/>
+	<type name="dbSnIdInfo_type" class="struct" code="2">
+		<field name="spId" type="int" />
+		<field name="appId" type="int"/>
+		<field name="areadId" type="int"/>
+		<field name="groupId" type="int"/>
+		<field name="returnSndaId" type="string"/>
+	</type>
+	<type name="dbSnIdInfo_array_type" class="array" itemType="DbSnIdInfo_type"/>
+	<type name="length_type" class="int" code="3" />
+	<type name="index_type" class="int" code="4" />
+	
+	<type name="returnSnId_type" class="string" code="5"/>
+	<type name="returnSnId_array_type" class="array" itemType="returnSnId_type"/>
+	<type name="appId_type" class="int" code="6" />
+	<type name="areaId_type" class="int" code="7" />
+	<type name="snIdArrayLength_type" class="int" code="8" />
+	<type name="reqMasterSnId_type" class="string" code="9" />
+	<type name="masterSnIdTypeInfo_type" class="struct" code="10">
+		<field name="releationType" type="int"/>
+		<field name="masterSnId" type="string"/>
+	</type>
+	<type name="masterSnIdTypeInfo_array_type" class="array" itemType="masterSnIdTypeInfo_type" />
+	
+	<message name="CheckMergeInfo" id="1">
+		<requestParameter>
+			<field name="dbSnIdInfo_array" type="dbSnIdInfo_array_type" />
+			<field name="reqSnIdInfo_array" type="reqSnIdInfo_array_type" />
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="correctSnda_array" type="returnSnId_array_type" />
+			<field name="snIdArrayLength" type="snIdArrayLength_type" />
+		</responseParameter>
+	</message>
+	<message name="CheckMasterSnId" id="8">
+		<requestParameter>
+			<field name="masterSnIdTypeInfo_array" type="masterSnIdTypeInfo_array_type" />
+			<field name="reqMasterSnId" type="reqMasterSnId_type" />
+		</requestParameter>
+		
+		<responseParameter>
+		</responseParameter>
+	</message>
+	<message name="getArrayLenth" id="2">
+		<requestParameter>
+			<field name="reqSnIdInfo_array" type="reqSnIdInfo_array_type" />
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="length" type="length_type" />
+		</responseParameter>
+	</message>
+	<message name="getIndexValue" id="3">
+		<requestParameter>
+			<field name="reqSnIdInfo_array" type="reqSnIdInfo_array_type" />
+			<field name="index" type="index_type" />
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="returnSnId" type="returnSnId_type" />
+			<field name="appId" type="appId_type" />
+			<field name="areaId" type="areaId_type" />
+		</responseParameter>
+	</message>
+	<message name="decrease" id="4">
+		<requestParameter>
+			<field name="length" type="length_type" />
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="length" type="length_type" />
+		</responseParameter>
+	</message>
+	<message name="getReturnSndaId" id="5">
+		<requestParameter>
+			<field name="reqSnIdInfo_array" type="reqSnIdInfo_array_type" />
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="returnSndaId_array" type="returnSnId_array_type" />
+			<field name="snIdArrayLength" type="snIdArrayLength_type" />
+		</responseParameter>
+	</message>
+	
+	<!-- for account union -->
+	<message name="getSnIdArrayLenth" id="6">
+		<requestParameter>
+			<field name="returnSndaId_array" type="returnSnId_array_type" />
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="length" type="length_type" />
+		</responseParameter>
+	</message>
+	<message name="getSnIdArrayIndexValue" id="7">
+		<requestParameter>
+			<field name="returnSndaId_array" type="returnSnId_array_type" />
+			<field name="index" type="index_type" />
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="returnSnId" type="returnSnId_type" />
+		</responseParameter>
+	</message>
+	<message name="doNothing" id="9">
+		<requestParameter>
+		</requestParameter>
+		
+		<responseParameter>
+		</responseParameter>
+	</message>
+</service>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<compose service="AccountMergeService.DeleteMergeAccount" endnode="end"> 
+	<def class="array">$returnSndaInfo</def>
+	<def class="string">$returnSndaId</def>
+	<def class="int">$appId</def>
+	<def class="int">$areaId</def>
+	<def class="int">$length</def>
+	<node index="QueryMergeInfoByRetSnId">
+		<sequence index="a">
+			<request service="DbAcctMatrix.QueryMergeInfoByRetSnId">          
+				<assign>$this.masterSndaId=$req.masterSndaId</assign>        
+				<assign>$this.returnSndaId=$req.returnSndaId</assign>     				
+			</request>
+		</sequence>	
+		<result>
+			<assign>$returnSndaInfo=$rsp.this.a.returnSndaInfo_array</assign>
+			<goto node="endError">$code.a!=0</goto>
+			<goto node="deleteMergeAccountDb"/>
+		</result>                     
+	</node>
+	<node index="deleteMergeAccountDb">  
+		<sequence index="a">
+			<request service="DbAcctMatrix.deleteMergeAccount">
+                <assign>$this.masterSndaId=$req.masterSndaId</assign> 
+                <assign>$this.returnSndaId=$req.returnSndaId</assign> 				
+			</request>
+		</sequence>			
+		<result>
+			<goto node="endError">$code.a!=0</goto>
+		    <goto node="queryChildSnIdByMasterSnIdDb"/>
+		</result>                     
+	</node>
+	<node index="queryChildSnIdByMasterSnIdDb">
+		<sequence index="a">
+			<request service="DbAcctMatrix.QueryChildSnIdByMasterSnId">          
+				<assign>$this.masterSndaId=$req.masterSndaId</assign>                   
+			</request>
+		</sequence>	
+		<result>
+			<goto node="endError">$code.a!=0</goto>
+			<goto node="deleteMasterToMasterDb"><![CDATA[$code.a==0 && $rsp.this.a.rowcount==1]]></goto>
+			 <goto node="cleanCache"/>
+		</result>                     
+	</node>
+	<node index="deleteMasterToMasterDb">
+		<sequence index="a">
+			<request service="DbAcctMatrix.deleteMasterToMaster">          
+				<assign>$this.masterSndaId=$req.masterSndaId</assign>                   
+			</request>
+		</sequence>	
+		<result>
+			<goto node="cleanCache"/>
+		</result>                     
+	</node>
+    <node index="cleanCache">	
+        <sequence index="a">
+			<request service="CacheMasterSndaId.delete">          
+				<assign>$this.loginSndaId=$req.returnSndaId</assign>           
+			</request>
+		</sequence>    
+		<sequence index="b">
+			<request service="CacheMasterMergeInfo.delete">          
+				<assign>$this.masterSndaId=$req.masterSndaId</assign>           
+			</request>
+		</sequence> 		
+		<!-- need do a loop to clean account merge info cache -->
+		<result>
+		    <goto node="getLength"/>
+		</result>                          
+	</node>
+				
+	<node index="endNoError">	    
+		<sequence index="a">
+			<response>
+			    <assign>$code=0</assign>					
+			</response>
+		</sequence>
+        <result>
+            <goto node="-1" />
+		</result>
+	</node>	
+	<node index="endError">	    
+		<sequence index="a">
+			<response>	
+				<assign>$code=-10379612</assign>
+			</response>
+		</sequence>
+        <result>
+            <goto node="-1" />
+		</result>
+	</node>
+	<node index="end">	    
+		<sequence index="0">
+			<response>						
+			</response>
+		</sequence>
+        <result>
+            <goto node="-1">
+			</goto>
+		</result>
+	</node>
+	<node index="getLength">
+        <sequence index="a">
+            <request service="AmsVirtualService.getArrayLenth">
+                <assign>$this.reqSnIdInfo_array=$returnSndaInfo</assign>
+            </request>
+        </sequence>
+        <result>
+            <assign>$length=$rsp.this.a.length</assign>
+            <goto node="getIndexValue"><![CDATA[ $rsp.this.a.length>0 ]]></goto>
+            <goto node="endNoError"/>
+        </result>
+    </node>
+
+    <node index="getIndexValue">
+        <sequence index="a">
+            <request service="AmsVirtualService.getIndexValue">
+                <assign>$this.reqSnIdInfo_array=$returnSndaInfo</assign>
+                <assign>$this.index=$length</assign>
+            </request>
+        </sequence>
+        <result>
+            <assign>$returnSndaId=$rsp.this.a.returnSnId</assign>
+			<assign>$appId=$rsp.this.a.appId</assign>
+			<assign>$areaId=$rsp.this.a.areaId</assign>
+            <goto node="delCache"/>
+        </result>
+    </node>
+
+    <node index="delCache">
+        <sequence index="a">
+            <request service="CacheMergeAccount.delete">
+                <assign>$this.appId=$appId</assign>	
+                <assign>$this.areaId=$areaId</assign>
+				<assign>$this.loginSndaId=$returnSndaId</assign>  			
+			</request>
+        </sequence>
+        <result>
+            <goto node="decrease"/>
+        </result>
+    </node>
+
+    <node index="decrease">
+        <sequence index="a">
+            <request service="AmsVirtualService.decrease">
+                <assign>$this.length=$length</assign>
+            </request>
+        </sequence>
+        <result>
+            <assign>$length=$rsp.this.a.length</assign>
+            <goto node="getIndexValue"><![CDATA[ $length>0 ]]></goto>
+			<goto node="endNoError"/>
+        </result>
+    </node>
+</compose>

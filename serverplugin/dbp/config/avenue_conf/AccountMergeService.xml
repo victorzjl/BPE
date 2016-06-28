@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service  name="AccountMergeService" id="116" IsTreeStruct ="false">
+	<type name="masterSndaId_type" class="string" code="1"/>
+	<type name="loginSndaId_type" class="string" code="2"/>
+	<type name="returnSndaId_type" class="string" code="3"/>
+	<type name="returnSndaId_array_type" class="array" itemType="returnSndaId_type"/>
+	<type name="returnSndaInfo_type" class="struct" code="4">
+		<field name="spId" type="int" />
+		<field name="appId" type="int"/>
+		<field name="areadId" type="int"/>
+		<field name="groupId" type="int"/>
+		<field name="returnSndaId" type="string"/>
+	</type>
+	<type name="returnSndaInfo_array_type" class="array" itemType="returnSndaInfo_type"/>
+	<type name="spId_type" class="int" code="5"/>
+	<type name="appId_type" class="int" code="6"/>
+	<type name="areaId_type" class="int" code="7"/>
+	<type name="groupId_type" class="int" code="8"/>
+	<message name="MergeAccount" id="1">
+		<requestParameter>
+			<field name="masterSndaId" type="masterSndaId_type"  />
+			<field name="returnSndaInfo" type="returnSndaInfo_array_type"  />
+		</requestParameter>
+		
+		<responseParameter>
+		</responseParameter>
+	</message>
+
+	<message name="QueryAccountInfo" id="2">
+		<requestParameter>
+			<field name="loginSndaId" type="loginSndaId_type" />
+			<field name="spId" type="spId_type"  />
+			<field name="appId" type="appId_type"  />
+			<field name="areaId" type="areaId_type"  />
+			<field name="groupId" type="groupId_type"  />
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="masterSndaId" type="masterSndaId_type" />
+			<field name="returnSndaId" type="returnSndaId_type" />
+		</responseParameter>
+	</message>
+	<message name="CleanCache" id="3">
+		<requestParameter>
+			<field name="returnSndaId" type="returnSndaId_type" />
+			<field name="masterSndaId" type="masterSndaId_type"/>
+			<field name="spId" type="spId_type"  />
+			<field name="appId" type="appId_type"  />
+			<field name="areaId" type="areaId_type"  />
+			<field name="groupId" type="groupId_type"  />
+		</requestParameter>
+		
+		<responseParameter>
+		</responseParameter>
+	</message>
+	<message name="DeleteMergeAccount" id="4">
+		<requestParameter>
+			<field name="masterSndaId" type="masterSndaId_type"  />
+			<field name="returnSndaId" type="returnSndaId_type"  />
+		</requestParameter>
+		
+		<responseParameter>
+		</responseParameter>
+	</message>
+	<message name="QueryAllRetAccount" id="5">
+		<requestParameter>
+			<field name="masterSndaId" type="masterSndaId_type"  />
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="returnSndaInfo" type="returnSndaInfo_array_type"  />
+			<field name="returnSndaId" type="returnSndaId_array_type" />
+		</responseParameter>
+	</message>
+	
+	<message name="AccountUnion" id="6">
+		<requestParameter>
+			<field name="masterSndaId" type="masterSndaId_type"  />
+			<field name="sndaId" type="returnSndaId_array_type"  />
+		</requestParameter>
+		
+		<responseParameter>
+		</responseParameter>
+	</message>
+	<message name="CancelAccountUnion" id="7">
+		<requestParameter>
+			<field name="masterSndaId" type="masterSndaId_type"  />
+			<field name="sndaId" type="returnSndaId_type"  />
+		</requestParameter>
+		
+		<responseParameter>
+		</responseParameter>
+	</message>
+	<message name="QueryParentAccount" id="8">
+		<requestParameter>
+			<field name="sndaId" type="returnSndaId_type"  />
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="masterSndaId" type="masterSndaId_type" />
+		</responseParameter>
+	</message>
+	<message name="QueryAllChildAccount" id="9">
+		<requestParameter>
+			<field name="masterSndaId" type="masterSndaId_type"  />
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="returnSndaId" type="returnSndaId_array_type" />
+		</responseParameter>
+	</message>
+</service>
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service  name="CacheLinkedAccount" id="41162" IsTreeStruct ="false">
+    <type name="masterSndaId_type" class="string" code="1" />
+	<type name="sndaId_type" class="string" code="10006" />	
+	<type name="returnSndaId_array_type" class="array" itemType="sndaId_type"/> 
+
+	
+	<message name="get" id="1">
+		<requestParameter>
+			<field name="masterSndaId" type="masterSndaId_type" required="true" />
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="returnSndaId_array" type="returnSndaId_array_type" />
+		</responseParameter>
+	</message>
+	
+	<message name="set" id="2">
+		<requestParameter>
+			<field name="masterSndaId" type="masterSndaId_type" required="true" />
+			<field name="returnSndaId_array" type="returnSndaId_array_type"  required="true" />			
+		</requestParameter>
+		
+		<responseParameter>			
+		</responseParameter>
+	</message>
+	
+	<message name="delete" id="3">
+		<requestParameter>
+			<field name="masterSndaId" type="masterSndaId_type" required="true" />
+		</requestParameter>		
+		<responseParameter>			
+		</responseParameter>
+	</message>
+ </service>

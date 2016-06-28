@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 即是服务描述文件，也是OracleBroker执行的配置文件 -->
+<service  name="DbAcctMatrix" id="13107" IsTreeStruct ="false">
+  
+	
+	<type name="string_type" class="string" code="998"/>
+	<type name="int_type" class="int" code="999"/>
+	
+
+	
+	<message name="testDBBroker" id="6">
+        <sql>
+            select appid,appname from soci_test where appid=:appid
+        </sql>
+		<requestParameter>
+			<field name="appid" type="int_type" to=":appid" />			
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="appname" type="string_type" from="$result[0][1]"/>
+		</responseParameter>
+	</message>
+	
+</service>
+
+
+  
+

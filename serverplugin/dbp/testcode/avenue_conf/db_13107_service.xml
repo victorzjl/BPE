@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 即是服务描述文件，也是OracleBroker执行的配置文件 -->
+<service  name="DbUserRegister" id="13107" IsTreeStruct ="false">
+
+	<type name="sndaId_type" class="string" code="1"/>
+	<type name="name_type" class="string" code="2"/>
+	<type name="rowcount_type" class="int" code="3"/>
+	<type name="idcard_type" class="string" code="4"/>
+	<type name="email_type" class="string" code="5"/>
+	
+	<type name="registerinfo_type" class="struct" code="10">
+	  <field name="question" type="string" length="20"/>
+	  <field name="answer" type="string" length="20"/>
+	</type>	
+	
+	<type name="sndaid_array_type" class="array" itemType="sndaId_type"/>
+	
+	<message name="testSimpleSelect" id="1">
+		<sql>
+			select name from TBREGISTER_$hashNum where sndaid=:sndaid
+		</sql>
+		
+	<requestParameter>
+			<field name="sndaId" type="sndaId_type" to=":sndaid,$hashNum" />		
+		</requestParameter>
+
+		<responseParameter>
+			<field name="name" type="name_type" from="$result[0][0]"/>
+		</responseParameter>
+
+	</message>
+	
+	<message name="testSimpleInsert" id="2">
+		<sql>
+			insert into TBREGISTER_$hashNum (sndaid,name) values (:sndaid,:name)
+		</sql>
+		<requestParameter>
+			<field name="sndaId" type="sndaId_type" to=":sndaid,$hashNum" />
+			<field name="name" type="name_type" to=":name" />			
+		</requestParameter>
+
+		<responseParameter>
+			<field name="rowcount" type="rowcount_type" from="$rowcount"/>
+		</responseParameter>
+	</message>
+	
+	<message name="testSimpleUpdate" id="3">
+		<sql>
+			update TBREGISTER_$hashNum set name = :name where sndaid = :sndaid
+		</sql>
+		<requestParameter>
+			<field name="sndaId" type="sndaId_type" to=":sndaid,$hashNum" />
+			<field name="name" type="name_type" to=":name" />			
+		</requestParameter>
+
+		<responseParameter>
+			<field name="rowcount" type="rowcount_type" from="$rowcount"/>
+		</responseParameter>
+	</message>
+	
+	<message name="testSimpleDelete" id="4">
+		<sql>
+			delete from TBREGISTER_$hashNum where sndaid = :sndaid
+		</sql>
+		<requestParameter>
+			<field name="sndaId" type="sndaId_type" to=":sndaid,$hashNum" />		
+		</requestParameter>
+
+		<responseParameter>
+			<field name="rowcount" type="rowcount_type" from="$rowcount"/>
+		</responseParameter>
+	</message>
+	
+	<message name="testComposeUpdate" id="5">
+		<sql>
+		<prefix>update TBREGISTER_$hashNum set </prefix>
+		<detail>name =:name</detail>
+		<detail>email =:email</detail>
+		<detail>idcard =:idcard</detail>
+		<suffix> where SNDAID=:sndaid </suffix>
+		</sql>
+		
+		<requestParameter>
+			<field name="sndaId" type="sndaId_type" to=":sndaid,$hashNum" />
+			<field name="name" type="name_type" to=":name" />			
+			<field name="email" type="email_type" to=":email" />			
+			<field name="idcard" type="idcard_type" to=":idcard" />					
+		</requestParameter>
+
+		<responseParameter>
+			<field name="rowcount" type="rowcount_type" from="$rowcount"/>
+		</responseParameter>
+	</message>
+	
+	<message name="testBulkInsert" id="6">
+		<sql>
+			insert into TBREGISTER_$hashNum (sndaid) values (:sndaid)
+		</sql>
+		<requestParameter>
+			<field name="sndaId_array" type="sndaid_array_type" to=":sndaid,$hashNum" />			
+		</requestParameter>
+
+		<responseParameter>
+			<field name="rowcount" type="rowcount_type" from="$rowcount"/>
+		</responseParameter>
+	</message>
+	
+	<message name="testStruct" id="7">
+		<sql>
+			update TBREGISTER_$hashNum set question1 = :question , answer1 = :answer where sndaid = :sndaid
+		</sql>
+		<requestParameter>
+			<field name="sndaId" type="sndaId_type" to=":sndaid,$hashNum" />
+			<field name="registerinfo" type="registerinfo_type" to=":question,:answer" />
+		</requestParameter>
+
+		<responseParameter>
+			<field name="rowcount" type="rowcount_type" from="$rowcount"/>
+		</responseParameter>
+	
+	</message>
+	
+	<message name="testProcedure" id="8">
+		<procedure>test_procedure(:sndaid,:username)</procedure>
+		<requestParameter>
+			<field name="sndaId" type="sndaId_type" to=":sndaid" />
+		</requestParameter>
+
+		<responseParameter>		
+			<field name="username" type="name_type" from=":username" />
+			<field name="rowcount" type="rowcount_type" from="$rowcount"/>
+		</responseParameter>
+	</message>
+	
+	 <message name="deleteMergeAccount" id="9">
+        <sql>
+                delete from test where a=1
+        </sql>
+        <sql>
+				delete from test2 where a=2
+        </sql>
+        <requestParameter>
+			<field name="sndaId" type="sndaId_type" to=":sndaid" />
+		</requestParameter>
+
+        <responseParameter>
+                        <field name="rowcount" type="rowcount_type" from="$ROWCOUNT"/>
+        </responseParameter>
+    </message>
+</service>
+
+
+  
+

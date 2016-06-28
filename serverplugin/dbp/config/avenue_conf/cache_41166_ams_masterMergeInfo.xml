@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service  name="CacheMasterMergeInfo" id="41166" IsTreeStruct ="false">
+    <type name="masterSndaId_type" class="string" code="1" />
+	<type name="returnSndaInfo_type" class="struct" code="10001">
+		<field name="spId" type="int" />
+		<field name="appId" type="int"/>
+		<field name="areadId" type="int"/>
+		<field name="groupId" type="int"/>
+		<field name="returnSndaId" type="string"/>
+	</type>
+	<type name="returnSndaInfo_array_type" class="array" itemType="returnSndaInfo_type"/>	
+	<message name="get" id="1">
+		<requestParameter>
+			<field name="masterSndaId" type="masterSndaId_type" required="true" />
+		</requestParameter>
+		
+		<responseParameter>
+			<field name="returnSndaInfo_array" type="returnSndaInfo_array_type" />
+		</responseParameter>
+	</message>
+	
+	<message name="set" id="2">
+		<requestParameter>
+			<field name="masterSndaId" type="masterSndaId_type" required="true" />
+			<field name="returnSndaInfo_array" type="returnSndaInfo_array_type"  required="true" />
+		</requestParameter>
+		
+		<responseParameter>			
+		</responseParameter>
+	</message>
+	
+	<message name="delete" id="3">
+		<requestParameter>
+			<field name="masterSndaId" type="masterSndaId_type" required="true" />
+		</requestParameter>		
+		<responseParameter>			
+		</responseParameter>
+	</message>
+	
+
+</service>

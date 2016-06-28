@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parameters>
+    <!--db addr-->
+	<DbSosList>
+        <ServiceId>13107</ServiceId>
+        <MasterDb conns="10">
+		<defaultconn>mysql://host=192.168.93.30 dbname=vip user=root password=P2kAlMiG3K
+		</defaultconn>
+		</MasterDb>
+        <SlaveDb conns="10"><defaultconn>mysql://host=192.168.93.30 dbname=vip user=root password=P2kAlMiG3K</defaultconn></SlaveDb>
+    </DbSosList>
+	
+</parameters>
+

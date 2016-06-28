@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parameters>
+    <!--db addr-->
+	<DbSosList>
+        <ServiceId>20023,13107</ServiceId>
+        <MasterDb conns="2" dbfactor="2" tbfactor="4" factortype="mod">
+			<defaultconn>mysql://host=192.168.93.30 dbname=USERREGISTER1 user=root password=fsWAZxsUyCELPGk9q1kRqztswnYzFIn8Bmfq4ESxGEBV8FbECwYhPQakx32kAkEzs/s6wvD/c5VBjAjYFujKk6mu4hP4l1uqiRnVsQFmksj3f8HzEaxBgT4VuwOLZ+KUoL0R6qotxxg9yamJxx+YFNAjDt3kofMmcpPlDYCSvxE=</defaultconn>
+			<DivideConns>
+				<conn>mysql://host=192.168.93.30 dbname=USERREGISTER1 user=root password=fsWAZxsUyCELPGk9q1kRqztswnYzFIn8Bmfq4ESxGEBV8FbECwYhPQakx32kAkEzs/s6wvD/c5VBjAjYFujKk6mu4hP4l1uqiRnVsQFmksj3f8HzEaxBgT4VuwOLZ+KUoL0R6qotxxg9yamJxx+YFNAjDt3kofMmcpPlDYCSvxE=</conn>
+				<conn>mysql://host=192.168.93.30 dbname=USERREGISTER2 user=root password=fsWAZxsUyCELPGk9q1kRqztswnYzFIn8Bmfq4ESxGEBV8FbECwYhPQakx32kAkEzs/s6wvD/c5VBjAjYFujKk6mu4hP4l1uqiRnVsQFmksj3f8HzEaxBgT4VuwOLZ+KUoL0R6qotxxg9yamJxx+YFNAjDt3kofMmcpPlDYCSvxE=</conn>
+			</DivideConns>
+		</MasterDb>
+        <SlaveDb conns="1">
+        	<defaultconn>mysql://host=192.168.93.30 dbname=USERREGISTER1 user=root password=fsWAZxsUyCELPGk9q1kRqztswnYzFIn8Bmfq4ESxGEBV8FbECwYhPQakx32kAkEzs/s6wvD/c5VBjAjYFujKk6mu4hP4l1uqiRnVsQFmksj3f8HzEaxBgT4VuwOLZ+KUoL0R6qotxxg9yamJxx+YFNAjDt3kofMmcpPlDYCSvxE=</defaultconn>
+        	<DivideConns>
+				<conn>mysql://host=192.168.93.30 dbname=USERREGISTER1 user=root password=fsWAZxsUyCELPGk9q1kRqztswnYzFIn8Bmfq4ESxGEBV8FbECwYhPQakx32kAkEzs/s6wvD/c5VBjAjYFujKk6mu4hP4l1uqiRnVsQFmksj3f8HzEaxBgT4VuwOLZ+KUoL0R6qotxxg9yamJxx+YFNAjDt3kofMmcpPlDYCSvxE=</conn>
+				<conn>mysql://host=192.168.93.30 dbname=USERREGISTER2 user=root password=fsWAZxsUyCELPGk9q1kRqztswnYzFIn8Bmfq4ESxGEBV8FbECwYhPQakx32kAkEzs/s6wvD/c5VBjAjYFujKk6mu4hP4l1uqiRnVsQFmksj3f8HzEaxBgT4VuwOLZ+KUoL0R6qotxxg9yamJxx+YFNAjDt3kofMmcpPlDYCSvxE=</conn>
+			</DivideConns>
+        </SlaveDb>
+    </DbSosList>
+	
+</parameters>
+

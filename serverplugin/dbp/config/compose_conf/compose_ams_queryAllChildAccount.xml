@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<compose service="AccountMergeService.QueryAllChildAccount" endnode="end">
+    <def class="array">$childSndaId</def>
+    <node index="queryCacheLinkedAccount">	
+		<sequence index="a">
+			<request service="CacheLinkedAccount.get">
+			    <assign>$this.masterSndaId=$req.masterSndaId</assign>             				
+			</request>
+		</sequence>			
+		<result>
+		    <assign>$childSndaId=$rsp.this.a.returnSndaId_array</assign>
+		    <goto node="checkCacheValueVs">$code.a==0</goto>
+			<goto node="queryDbLinkedAccount"/>
+		</result>                     
+	</node>
+	<node index="checkCacheValueVs">
+		<sequence index="a">
+			<request service="AmsVirtualService.getSnIdArrayLenth"> 
+				<assign>$this.returnSndaId_array=$childSndaId</assign>             
+			</request>
+		</sequence>	
+		<result>
+			<goto node="endNotExist">$rsp.this.a.length==0</goto>
+			<goto node="end" />
+		</result>                     
+	</node>
+	<node index="queryDbLinkedAccount">	
+		<sequence index="a">
+			<request service="DbAcctMatrix.queryLinkedAccounts">
+                <assign>$this.masterSndaId=$req.masterSndaId</assign>                				
+			</request>
+		</sequence>			
+		<result>
+		    <assign>$childSndaId=$rsp.this.a.returnSndaId_array</assign>
+		    <goto node="endError">$code.a!=0</goto>
+			<goto node="linkNotExist"><![CDATA[$code.a==0 && $rsp.this.a.rowcount==0]]></goto>
+			<!-- 失败，结束 -->
+			<goto node="setCacheLinkedAccount"/>
+		</result>                     
+	</node>	
+   	<node index="linkNotExist">
+		<sequence index="a">
+			<request service="CacheLinkedAccount.set">  
+				<assign>$this.masterSndaId=$req.masterSndaId</assign> 
+                <assign>$this.returnSndaId_array=$childSndaId</assign> 					
+			</request>
+		</sequence>	
+		<result>
+		    <goto node="endNotExist"/>
+		</result>                     
+	</node>	
+    <node index="setCacheLinkedAccount">	
+		<sequence index="a">
+			<request service="CacheLinkedAccount.set">
+			    <assign>$this.masterSndaId=$req.masterSndaId</assign>  
+                <assign>$this.returnSndaId_array=$childSndaId</assign> 				
+			</request>
+		</sequence>			
+		<result>
+		    <goto node="endNoError"/>
+		</result>                     
+	</node>
+	<node index="endNotExist">	    
+		<sequence index="a">
+			<response>
+			    <assign>$code=-10379601</assign>					
+			</response>
+		</sequence>
+        <result>
+            <goto node="-1" />
+		</result>
+	</node>
+	<node index="endError">	    
+		<sequence index="a">
+			<response>	
+				<assign>$code=-10379612</assign>
+			</response>
+		</sequence>
+        <result>
+            <goto node="-1" />
+		</result>
+	</node>
+	<node index="endNoError">	    
+		<sequence index="a">
+			<response>	
+				<assign>$code=0</assign>
+				<assign>$this.returnSndaId=$childSndaId</assign>
+			</response>
+		</sequence>
+        <result>
+            <goto node="-1" />
+		</result>
+	</node>
+	<node index="end">	    
+		<sequence index="a">
+			<response>
+                <assign>$this.returnSndaId=$childSndaId</assign>							
+			</response>
+		</sequence>
+        <result>
+            <goto node="-1" />
+		</result>
+	</node>
+
+</compose>

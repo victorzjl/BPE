@@ -1,0 +1,19 @@
+#ifndef _DB_CONN_COMMON_H_
+#define _DB_CONN_COMMON_H_
+
+#define DBB_ERRCODE_BASE 10243000
+
+#define DBB_SQL_ERROR DBB_ERRCODE_BASE+1)
+#define DBB_DB_ERROR  DBB_ERRCODE_BASE+2)
+
+typedef enum 
+{
+	DBT_SIMPLE,
+	DBT_ORACLE,
+	DBT_MYSQL,
+	DBT_ODBC,
+	DBT_UNSUPPORT
+} EDBType;
+
+#endif
+
