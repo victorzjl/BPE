@@ -1,0 +1,14 @@
+XLOG change log:
+##############################
+Version: 1.0
+Time:	 2009/10/15
+Author:  zongjinliang
+Change:
+	initial version
+##############################
+Version: 1.1
+Time:	 2009/11/13
+Author:  zongjinliang
+Change:
+(1)auto valid when log.properties changed
+##############################

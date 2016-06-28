@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xlog_static", "xlog.vcproj", "{1A4197C9-27F5-427E-80F8-5B68BEDDBCDD}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xlog_dll", "xlog_dll.vcproj", "{024FB288-276F-4622-B38D-D91E8338FA40}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{1A4197C9-27F5-427E-80F8-5B68BEDDBCDD}.Debug.ActiveCfg = Debug|Win32
+		{1A4197C9-27F5-427E-80F8-5B68BEDDBCDD}.Debug.Build.0 = Debug|Win32
+		{1A4197C9-27F5-427E-80F8-5B68BEDDBCDD}.Release.ActiveCfg = Release|Win32
+		{1A4197C9-27F5-427E-80F8-5B68BEDDBCDD}.Release.Build.0 = Release|Win32
+		{024FB288-276F-4622-B38D-D91E8338FA40}.Debug.ActiveCfg = Debug|Win32
+		{024FB288-276F-4622-B38D-D91E8338FA40}.Debug.Build.0 = Debug|Win32
+		{024FB288-276F-4622-B38D-D91E8338FA40}.Release.ActiveCfg = Release|Win32
+		{024FB288-276F-4622-B38D-D91E8338FA40}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
