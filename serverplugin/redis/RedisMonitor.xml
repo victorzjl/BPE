@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parameters>
+<Queue>
+<QueueTimeoutInterval>3</QueueTimeoutInterval>   <!-- 队列超时时间，单位为秒 -->
+<ConditionTimes>10</ConditionTimes>              <!-- 队列里消息超时次数阈值 -->
+<AlarmFrequency>10</AlarmFrequency>              <!-- 队列消息异常进行报警的间隔时间，单位为秒 -->
+<WriteQueueFullDiscard>1</WriteQueueFullDiscard>
+</Queue>
+
+<Dependency>
+<AlarmFrequency>10</AlarmFrequency>               <!-- 重连线程里的重连信息报警时间间隔值，单位为秒 -->
+<AlarmListLength>60000</AlarmListLength>          <!-- list结构报警长度 -->
+</Dependency>
+</parameters>

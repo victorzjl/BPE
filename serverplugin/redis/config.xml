@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parameters>
+
+<!--related server-->
+<ThreadNum>1</ThreadNum>
+<SapPort>9897</SapPort>
+<CohPort>9997</CohPort>
+	
+<!-- Redis服务读取策略，缺省为先读主服务器，后读从服务器；RedisReadPolicy不配置或为0则是缺省策略，1为严格意义上的读写分离(主写从读)-->
+<RedisReadPolicy>0</RedisReadPolicy>   
+<!--读线程组为0的时候，读写不分离，全都操纵主服务器 -->
+<RedisReadThreadNum>1</RedisReadThreadNum>				
+<RedisWriteThreadNum>1</RedisWriteThreadNum>	
+
+<RedisSosList>
+    <ServiceId>42000,43000</ServiceId>
+	<ConHash>0</ConHash>
+    <MasterServerAddr>10.241.37.35:6379</MasterServerAddr>
+	<SlaverServerAddr>10.241.37.35:6379</SlaverServerAddr>    
+</RedisSosList>
+
+<RedisSosList>
+    <ServiceId>44000</ServiceId>
+    <MasterServerAddr>10.241.37.35:6379</MasterServerAddr>
+	<SlaverServerAddr>10.241.37.35:6379</SlaverServerAddr>    
+</RedisSosList>
+   
+</parameters>
