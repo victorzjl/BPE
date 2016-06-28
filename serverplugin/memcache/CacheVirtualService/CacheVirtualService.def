@@ -1,0 +1,4 @@
+;LIBRARY	libcache
+EXPORTS
+create
+destroy
