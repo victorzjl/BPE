@@ -2,7 +2,7 @@
 <parameters>
     <ConfigDb>
         <ServiceId>40998</ServiceId>
-        <ConnString>service=90_29Account user=riskcontrol password=riskcontrol</ConnString>
+        <ConnString>service=90_29Account user=aa password=aa</ConnString>
         <QueryStatement>SELECT APPID,APPCODE FROM TBAPPPOLICYWHITELIST</QueryStatement>
     </ConfigDb>
 
@@ -35,7 +35,7 @@
 		<DbSosList>
 			<ServiceId>45601</ServiceId>
 			<MasterDb conns="8">
-					<defaultconn>oracle://service=90_29Account user=riskcontrol password=vbUfavIIi5GgEiDAcsnzSmSk55hgMoPyOwA1fxkgiklor7eZo1Iv7+S1PZTIjO/N/TqukSGqEYuQKtpYJBAL0oL/1x+9Kjiu+WYc5aZ9IeCuNpGkxP8V4TSExwihd6mZ0WWiK2wTLFvNPq9SOKz3N9D68mPp8PM7Q7lmH1Pa62A=</defaultconn>
+					<defaultconn>oracle://service=90_29Account user=aa password=aa</defaultconn>
 			</MasterDb>
 		</DbSosList>
 
